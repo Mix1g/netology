@@ -1,4 +1,3 @@
-
 #!/bin/bash
 # display command line options
 
