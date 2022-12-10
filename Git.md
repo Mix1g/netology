@@ -5,11 +5,13 @@ $ git show aefea
 commit aefead2207ef7e2aa5dc81a34aedf0cad4c32545
 
 
+
 2. Какому тегу соответствует коммит 85024d3?
 Тегу v0.12.23
 
 $ git tag -l --points-at 85024d3
 v0.12.23
+
 
 
 3. Сколько родителей у коммита b8d720? Напишите их хеши.
@@ -19,8 +21,10 @@ $ git show --pretty=%P b8d720
 56cd7859e05c36c06b56d013b55a252d0bb7e158 9ea88f22fc6269854151c571162c5bcf958bee2b
 
 
+
 4. Перечислите хеши и комментарии всех коммитов которые были сделаны между тегами v0.12.23 и v0.12.24.
 Между тегами 10 коммитов. Хеши и комментарии:
+
 
 $ git log v0.12.23..v0.12.24 --oneline
 33ff1c03b (tag: v0.12.24) v0.12.24
@@ -38,6 +42,7 @@ dd01a3507 Update CHANGELOG.md
 5. Найдите коммит в котором была создана функция func providerSource ...
 Функция func providerSource была создана в коммите 8c928e8358 от 02.04.2020
 
+
 $ git grep -n 'func providerSource(.*)'
 provider_source.go:23:func providerSource(configs []*cliconfig.ProviderInstallation, services *disco.Disco) (getproviders.Source, tfdiags.Diagnostics) {
 $ git log --oneline -S'func providerSource' provider_source.go
@@ -52,6 +57,7 @@ $ git blame -L 19,19 provider_source.go
 
 
 
+
 6. Найдите все коммиты в которых была изменена функция globalPluginDirs.
 Функцию globalPluginDirs исправляли в пяти коммитах.
 
@@ -63,6 +69,7 @@ $ git log -L :globalPluginDirs:plugins.go  -s --oneline
 41ab0aef7 Add missing OS_ARCH dir to global plugin paths
 66ebff90c move some more plugin search path logic to command
 8364383c3 Push plugin discovery down into command package
+
 
 
 
