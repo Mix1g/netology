@@ -8,7 +8,7 @@ Test2
 1. Найдите полный хеш и комментарий коммита, хеш которого начинается на aefea.
 Полный хеш: aefead2207ef7e2aa5dc81a34aedf0cad4c32545
 
-$ git show aefea | head -n 1
+$ git show aefea
 commit aefead2207ef7e2aa5dc81a34aedf0cad4c32545
 
 
@@ -76,7 +76,7 @@ $ git log -L :globalPluginDirs:plugins.go  -s --oneline
 7. Кто автор функции synchronizedWriters?
 Автор функции synchronizedWriters Martin Atkins. Он добавил её 2017-05-03 коммитом 5ac311e2a
 
-Примерно в то же время, когда Андрей записывал курс, James Bardin удалил эту функцию коммитом bdfea50cc от Mon Nov 30 18:02:04 2020 с комментарием remove unused.
+James Bardin удалил эту функцию коммитом bdfea50cc от Mon Nov 30 18:02:04 2020 с комментарием remove unused.
 
 $ git log -S'func synchronizedWriters' --oneline
 bdfea50cc remove unused
