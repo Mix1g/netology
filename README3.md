@@ -66,21 +66,22 @@ systemd(1)─┬─VBoxService(780)─┬─{VBoxService}(781)
 # 5 Получится ли одновременно передать команде файл на stdin и вывести ее stdout в другой файл? Приведите работающий пример.
 
 Да получиться 
-(cat  < test011  >  test0122)
 
 
+                                                     cat  < test011  >  test0122
+
     
-vagrant@vagrant :~$ cat test011
+                                                    vagrant@vagrant :~$ cat test011
     
-test011 text
+                                                    test011 text
     
-vagrant@vagrant :~$ cat test0122
+                                                    vagrant@vagrant :~$ cat test0122
     
-vagrant@vagrant :~$ cat <test011 >test0122
+                                                    vagrant@vagrant :~$ cat <test011 >test0122
     
-vagrant@vagrant :~$ cat test0122
+                                                     vagrant@vagrant :~$ cat test0122
     
-test0111 text
+                                                     test0111 text
 
   #  6  Получится ли, находясь в графическом режиме, вывести данные из PTY в какой-либо из эмуляторов TTY? Сможете ли вы наблюдать выводимые данные?
   
