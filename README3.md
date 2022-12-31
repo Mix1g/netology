@@ -18,6 +18,7 @@ vagrant@vagrant:/var/log$ ps -p 1
       1 ?        00:00:01 systemd
 
 vagrant@vagrant:/var/log$ pstree -p
+
 systemd(1)─┬─VBoxService(780)─┬─{VBoxService}(781)
            │                  ├─{VBoxService}(782)
            │                  ├─{VBoxService}(783)
@@ -59,7 +60,8 @@ systemd(1)─┬─VBoxService(780)─┬─{VBoxService}(781)
    # 4 Как будет выглядеть команда, которая перенаправит вывод stderr ls на другую сессию терминала?
          
          
-         ls /root 2>/dev/pts/X,
+ls /root 2>/dev/pts/X,
+
 где /dev/pts/X - псевдотерминал другой сессии
 
 
