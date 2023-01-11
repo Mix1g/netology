@@ -1,3 +1,7 @@
+ # Домашнее задание по лекции "Операционные системы (лекция 2)
+
+
+
 ##### 1 Используя знания из лекции по systemd, создайте самостоятельно простой unit-файл для node_exporter
     vagrant@vagrant:~$ cat /etc/systemd/system/node_exporter.service
     [Unit]
