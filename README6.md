@@ -139,3 +139,69 @@
     Continue creating array? y
     mdadm: Defaulting to version 1.2 metadata
     mdadm: array /dev/md0 started
+    
+   ##### 7 Соберите mdadm RAID0 на второй паре маленьких разделов
+   
+   
+    vagrant@vagrant:~$ sudo mdadm --create /dev/md1 -l 0 -n 2 /dev/sdb2 /dev/sdc2
+    mdadm: Defaulting to version 1.2 metadata
+    mdadm: array /dev/md1 started.
+    vagrant@vagrant:~$ lsblk
+    NAME                 MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINT
+    sda                    8:0    0   64G  0 disk
+    ├─sda1                 8:1    0  512M  0 part  /boot/efi
+    ├─sda2                 8:2    0    1K  0 part
+    └─sda5                 8:5    0 63.5G  0 part
+    ├─vgvagrant-root   253:0    0 62.6G  0 lvm   /
+    └─vgvagrant-swap_1 253:1    0  980M  0 lvm   [SWAP]
+    sdb                    8:16   0  2.5G  0 disk
+    ├─sdb1                 8:17   0    2G  0 part
+    │ └─md0                9:0    0    2G  0 raid1
+    └─sdb2                 8:18   0  511M  0 part
+    └─md1                9:1    0 1018M  0 raid0
+    sdc                    8:32   0  2.5G  0 disk
+    ├─sdc1                 8:33   0    2G  0 part
+    │ └─md0                9:0    0    2G  0 raid1
+    └─sdc2                 8:34   0  511M  0 part
+    └─md1                9:1    0 1018M  0 raid0
+    
+   ##### 8 Создайте 2 независимых PV на получившихся md-устройствах.
+   
+     vagrant@vagrant:~$ sudo pvcreate /dev/md1 /dev/md0
+     Physical volume "/dev/md1" successfully created.
+     Physical volume "/dev/md0" successfully created.
+     vagrant@vagrant:~$ sudo pvscan
+     PV /dev/sda5   VG vgvagrant       lvm2 [<63.50 GiB / 0    free]
+     PV /dev/md0                       lvm2 [<2.00 GiB]
+     PV /dev/md1                       lvm2 [1018.00 MiB]
+     Total: 3 [<66.49 GiB] / in use: 1 [<63.50 GiB] / in no VG: 2 [2.99 GiB] 
+     
+   ##### 9 Создайте общую volume-group на этих двух PV
+   
+     vagrant@vagrant:~$ sudo vgcreate VG1 /dev/md0 /dev/md1
+     Volume group "VG1" successfully created
+     vagrant@vagrant:~$ sudo vgscan
+     Found volume group "vgvagrant" using metadata type lvm2
+     Found volume group "VG1" using metadata type lvm2
+     
+   ##### 10 Создайте LV размером 100 Мб, указав его расположение на PV с RAID0.
+   
+      vagrant@vagrant:~$ sudo lvcreate -L 100M -n LV1 VG1 /dev/md1
+      Logical volume "LV1" created..
+      
+   ##### 11 Создайте mkfs.ext4 ФС на получившемся LV.
+   
+     vagrant@vagrant:~$ sudo mkfs.ext4 /dev/VG1/LV1
+     mke2fs 1.45.5 (07-Jan-2020)
+     Creating filesystem with 25600 4k blocks and 25600 inodes
+
+     Allocating group tables: done
+     Writing inode tables: done
+     Creating journal (1024 blocks): done
+     Writing superblocks and filesystem accounting information: done
+     
+     
+   ##### 12 Смонтируйте этот раздел в любую директорию, например, /tmp/new
+   
+     vagrant@vagrant:~$ mkdir /tmp/new
+     vagrant@vagrant:~$ sudo mount /dev/VG1/LV1 /tmp/new 
