@@ -75,4 +75,9 @@
 
    
    
+   ###### 5 Используя diagrams.net, создайте L3 диаграмму вашей домашней сети или любой другой сети, с которой вы работали.
+   
+   
+   ![internet-network-diagram-template](https://user-images.githubusercontent.com/119140245/216750474-935e127f-5078-46b3-b503-12c23c33e2f1.png)
+
    
