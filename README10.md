@@ -1,4 +1,32 @@
 
+  ###### 1 Установите Bitwarden плагин для браузера. Зарегестрируйтесь и сохраните несколько паролей.
+  
+  
+  
+  
+![sysadmin-39-bitwarden](https://user-images.githubusercontent.com/119140245/218298017-347f592d-b1ca-4c28-8af5-f9f13243e999.png)
+
+
+
+
+ 
+   ##### 2 Установите Google authenticator на мобильный телефон. Настройте вход в Bitwarden акаунт через Google authenticator OTP.
+   
+   
+ 
+ ![sysadmin-39-bitwarden-g-auth](https://user-images.githubusercontent.com/119140245/218298074-aa30e509-b4cd-47e9-b615-7cb751972aea.png)
+
+
+
+
+
+   ##### 3 Установите apache2, сгенерируйте самоподписанный сертификат, настройте тестовый сайт для работы по HTTPS.  
+
+
+
+
+
+![sysadmin-39-apache-ssl](https://user-images.githubusercontent.com/119140245/218298114-af187cb7-f606-449e-a8e6-0bdaa6dfdcb5.png)
 
 
 
@@ -12,28 +40,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##### 3 Установите apache2, сгенерируйте самоподписанный сертификат, настройте тестовый сайт для работы по HTTPS
 
     root@debian:/home/alexander# sudo systemctl status apache2
     ● apache2.service - The Apache HTTP Server
@@ -246,3 +252,53 @@
        This system is built by the Bento project by Chef Software
        More information can be found at https://github.com/chef/bento
        Last login: Sat Feb 29 10:12:03 2023 from 10.5.5.2
+       
+       
+ ##### 7. Соберите дамп трафика утилитой tcpdump в формате pcap, 100 пакетов. Откройте файл pcap в Wireshark.
+ 
+  root@ubnt:~# tcpdump -nnei any -c 100 -w node4-100packets.pcap
+  tcpdump: listening on any, link-type LINUX_SLL (Linux cooked v1), capture size 262144 bytes
+  100 packets captured
+  106 packets received by filter
+   0 packets dropped by kernel
+   
+   
+   ![krVTMM6](https://user-images.githubusercontent.com/119140245/218298211-cb4a923e-3c4f-4321-80d9-f58b2901b38e.png)
+   
+   
+   ##### 8 Просканируйте хост scanme.nmap.org. Какие сервисы запущены?
+   
+   Запущены ssh, web-сервер, сервер nping-echo. Открытый порт 31337
+   
+   
+   root@ubnt:~# nmap scanme.nmap.org
+   Starting Nmap 7.80 ( https://nmap.org ) at 2023-02-12 11:02 UTC
+   Nmap scan report for scanme.nmap.org (45.33.32.156)
+   Host is up (0.21s latency).
+   Other addresses for scanme.nmap.org (not scanned): 2600:3c01::f03c:91ff:fe18:bb2f
+   Not shown: 996 closed ports
+   PORT      STATE SERVICE
+   22/tcp    open  ssh
+   80/tcp    open  http
+   9929/tcp  open  nping-echo
+   31337/tcp open  Elite
+
+   Nmap done: 1 IP address (1 host up) scanned in 3.86 seconds
+   
+   ##### 9 Установите и настройте фаервол ufw на web-сервер из задания 3. Откройте доступ снаружи только к портам 22,80,443
+
+
+  root@ubnt:~# ufw status verbose
+  Status: active
+  Logging: on (low)
+  Default: deny (incoming), allow (outgoing), disabled (routed)
+  New profiles: skip
+
+  To                         Action      From
+  --                         ------      ----
+  22/tcp                     ALLOW IN    Anywhere
+  80,443/tcp (Apache Full)   ALLOW IN    Anywhere
+  22/tcp (v6)                ALLOW IN    Anywhere (v6)
+  80,443/tcp (Apache Full (v6)) ALLOW IN    Anywhere (v6)
+ 
+ 
