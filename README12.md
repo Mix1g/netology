@@ -57,7 +57,7 @@ import re
 try:
     path = sys.argv[1]
 except IndexError:
-    path = "~/netology/devops"
+    path = "~/netology/sysadm-homeworks"
 
 resolved_path = os.path.normpath(os.path.abspath(
     os.path.expanduser(os.path.expandvars(path))))
