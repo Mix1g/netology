@@ -29,7 +29,7 @@
 
 import os
 
-path = "~/netology/sysadm-homeworks"
+path = "~/netology/devops"
 resolved_path = os.path.normpath(os.path.abspath(os.path.expanduser(os.path.expandvars(path))))
 bash_command = [f"cd {resolved_path}", "git status"]
 result_os = os.popen(' && '.join(bash_command)).read()
