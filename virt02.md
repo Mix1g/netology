@@ -2,13 +2,13 @@
 
 
 
+### Задача 1
 
 
+### Задача 2
 
 
-
-
-### 3
+### Задача 3
 
 
     root@Lenovo:/home/alexander# VBoxManage -v
