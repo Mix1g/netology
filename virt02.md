@@ -43,9 +43,11 @@
     6.1.38_Ubuntur153438
      
 
+
     root@Lenovo:/home/alexander# vagrant -v
     Vagrant 2.2.19
 
+ 
  
     root@Lenovo:/home/alexander# ansible --version
     ansible [core 2.12.4]
@@ -57,7 +59,9 @@
      python version = 3.10.7 (main, Nov 24 2022, 19:45:47) [GCC 12.2.0]
      jinja version = 3.0.3
      libyaml = True
-  
+ 
+ 
+ 
   
     root@Lenovo:/home/alexander# terraform -v
     Terraform v1.4.2
