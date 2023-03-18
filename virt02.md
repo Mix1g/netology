@@ -48,11 +48,31 @@
 
 ### Задача 4
 
-`lexander@Lenovo:~/vagrant$ vagrant ssh Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-144-generic x86_64)Documentation:  https://help.ubuntu.comManagement:     https://landscape.canonical.comSupport:        https://ubuntu.com/advantageSystem information as of Sat 18 Mar 2023 07:30:30 PM UTCSystem load:  1.32               Processes:             167 Usage of /:   12.5% of 30.34GB   Users logged in:       0 Memory usage: 10%                IPv4 address for eth0: 10.0.2.15 Swap usage:   0%Introducing Expanded Security Maintenance for Applications. Receive updates to over 25,000 software packages with your Ubuntu Pro subscription. Free for personal use.https://ubuntu.com/proThis system is built by the Bento project by Chef Software More information can be found at https://github.com/chef/bento Last login: Sat Mar 18 19:24:02 2023 from 10.0.2.2`
+    lexander@Lenovo:~/vagrant$ vagrant ssh
+    Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-144-generic x86_64)
 
-```
+    * Documentation:  https://help.ubuntu.com
+    * Management:     https://landscape.canonical.com
+    * Support:        https://ubuntu.com/advantage
 
-```
+    System information as of Sat 18 Mar 2023 07:30:30 PM UTC
 
-vagrant@server1:~$ docker ps
-CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+    System load:  1.32               Processes:             167
+    Usage of /:   12.5% of 30.34GB   Users logged in:       0
+    Memory usage: 10%                IPv4 address for eth0: 10.0.2.15
+    Swap usage:   0%
+
+    * Introducing Expanded Security Maintenance for Applications.
+    Receive updates to over 25,000 software packages with your
+    Ubuntu Pro subscription. Free for personal use.
+
+      https://ubuntu.com/pro
+
+
+    This system is built by the Bento project by Chef Software
+    More information can be found at https://github.com/chef/bento
+    Last login: Sat Mar 18 19:24:02 2023 from 10.0.2.2
+
+
+    vagrant@server1:~$ docker ps
+    CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
