@@ -23,12 +23,12 @@ Overlay сеть - это сеть между несколькими демон�
 
     [root@node01 ~]# docker node ls
     ID                            HOSTNAME             STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
-    q7ybewzhnlt4g8i4q2hgsme16 *   node01.netology.yc   Ready     Active         Leader           20.10.11
-    rjgo07uaqsffxaduqgogexh4y     node02.netology.yc   Ready     Active         Reachable        20.10.11
-    hnvx6ug830f6q2orbt21wl536     node03.netology.yc   Ready     Active         Reachable        20.10.11
-    yvksdjnnhdz7m918gjodmime5     node04.netology.yc   Ready     Active                          20.10.11
-    1actkrhyg3s1gaboy6ibf1wv6     node05.netology.yc   Ready     Active                          20.10.11
-    vovxqnougcs1d37cui2vv1bs6     node06.netology.yc   Ready     Active                          20.10.11
+    q7ybewzhnlt4g8i4q2hgsme16 *   node01.netology.yc   Ready     Active         Leader           23.0.1
+    rjgo07uaqsffxaduqgogexh4y     node02.netology.yc   Ready     Active         Reachable        23.0.1
+    hnvx6ug830f6q2orbt21wl536     node03.netology.yc   Ready     Active         Reachable        23.0.1
+    yvksdjnnhdz7m918gjodmime5     node04.netology.yc   Ready     Active                          23.0.1
+    1actkrhyg3s1gaboy6ibf1wv6     node05.netology.yc   Ready     Active                          23.0.1
+    vovxqnougcs1d37cui2vv1bs6     node06.netology.yc   Ready     Active                          23.0.1
 
 ### Задача 3
 
