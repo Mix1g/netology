@@ -158,3 +158,57 @@
       innodb_log_file_size = 100M
 
 #### Задача 3 
+
+Установите профилирование `SET profiling = 1.` Изучите вывод профилирования команд `SHOW PROFILES;`.
+
+     mysql> use test_db
+     Database changed
+     mysql> SET profiling = 1;
+     Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+     mysql> show profiles;
+     +----------+------------+-------------------+
+     | Query_ID | Duration   | Query             |
+     +----------+------------+-------------------+
+     |        1 | 0.02399225 | SELECT DATABASE() |
+     |        2 | 0.00029950 | SET profiling = 1 |
+     +----------+------------+-------------------+
+     2 rows in set, 1 warning (0.00 sec)
+     
+Исследуйте, какой `engine` используется в таблице БД `test_db` и приведите в ответе.     
+
+     mysql> SELECT TABLE_NAME,
+         ->        ENGINE
+         -> FROM   information_schema.TABLES
+         -> WHERE  TABLE_SCHEMA = 'test_db';
+      +------------+--------+
+      | TABLE_NAME | ENGINE |
+      +------------+--------+
+      | orders     | InnoDB |
+      +------------+--------+
+      1 row in set (0.00 sec) 
+      
+ Измените `engine` и приведите время выполнения и запрос на изменения из профайлера в ответе:
+
+- на MyISAM
+- на InnoDB
+
+.
+
+
+     mysql> alter table orders engine = myisam;
+     Query OK, 5 rows affected (0.87 sec)
+     Records: 5  Duplicates: 0  Warnings: 0
+
+     mysql> alter table orders engine = innodb;
+    Query OK, 5 rows affected (0.68 sec)
+    Records: 5  Duplicates: 0  Warnings: 0
+
+    mysql> show profiles;
+    +----------+------------+------------------------------------+
+    | Query_ID | Duration   | Query                              |
+    +----------+------------+------------------------------------+
+    |       10 | 0.87218275 | alter table orders engine = myisam |
+    |       11 | 0.68286425 | alter table orders engine = innodb |
+    +----------+------------+------------------------------------+
+    2 rows in set, 1 warning (0.00 sec)
