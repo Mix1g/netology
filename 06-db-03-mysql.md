@@ -156,3 +156,5 @@
       innodb_log_buffer_size = 1M
       innodb_buffer_pool_size = 1G
       innodb_log_file_size = 100M
+
+#### Задача 3 
