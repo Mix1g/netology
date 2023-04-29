@@ -36,7 +36,7 @@
 Далее мы будем работать с этим экземпляром Elasticsearch.
 
 https://github.com/Mix1g/netology/blob/master/Dockerfile
-
+https://hub.docker.com/r/docker/mix1g/elastic/
 
 ##### Решение:
 
