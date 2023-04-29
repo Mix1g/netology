@@ -35,6 +35,9 @@
 
 Далее мы будем работать с этим экземпляром Elasticsearch.
 
+https://github.com/Mix1g/netology/blob/master/Dockerfile
+
+
 ##### Решение:
 
     vagrant@vm03:~$ curl -XGET http://localhost:9200
