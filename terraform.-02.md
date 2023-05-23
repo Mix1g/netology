@@ -59,26 +59,11 @@
 
 
 #### ЗАДАНИЕ 4
+1. Объявите в файле outputs.tf отдельные output, для каждой из ВМ с ее внешним IP адресом.
+2. Примените изменения.
+3. В качестве решения приложите вывод значений ip-адресов команды terraform output
 
-1  Объявил в файле outputs.tf output типа map, содержащий { instance_name = external_ip } для каждой из ВМ.
-
-#### Файл outputs.tf:    
-
-     output "external_ip_address_vm_web" {
-     value = "${yandex_compute_instance.vm_web.network_interface.0.nat_ip_address}"
-    }
-
-     output "external_ip_address_vm_db" {
-     value = "${yandex_compute_instance.vm_db.network_interface.0.nat_ip_address}"
-    }
-    
-2 Применил изменения.  
-
-    terraform plan
-    terraform apply
-    terraform output
-    
-  ![10 копия](https://github.com/Mix1g/netology/assets/119140245/030acfd3-d3d8-4f8d-a063-c7b0dd339ef5)
+- Решение [outputs.tf](https://github.com/Mix1g/netology/blob/master/7.2-terraform/src/outputs.tf)
   
   #### ЗАДАНИЕ 5
   
