@@ -50,7 +50,7 @@
 
 - Решение [variables.tf](https://github.com/Mix1g/netology/blob/master/7.2-terraform/src/variables.tf)
 
-### ЗАДАНИЕ 3
+#### ЗАДАНИЕ 3
 1. Создайте в корне проекта файл 'vms_platform.tf' . Перенесите в него все переменные ВМ.
 2. Скопируйте блок ресурса и создайте с его помощью вторую ВМ: "netology-develop-platform-db" , cores = 2, memory = 2, core_fraction = 20. Объявите ее переменные с префиксом vm_db_ в том же файле.
 3. Примените изменения.
@@ -64,8 +64,12 @@
 3. В качестве решения приложите вывод значений ip-адресов команды terraform output
 
 - Решение [outputs.tf](https://github.com/Mix1g/netology/blob/master/7.2-terraform/src/outputs.tf)
+
+     $ terraform output
+     db_ip_address = "51.250.0.213"
+     web_ip_address = "51.250.74.121"
   
-  #### ЗАДАНИЕ 5
+ #### ЗАДАНИЕ 5
   
   1 В файле locals.tf описал в одном local-блоке имя каждой ВМ, используя интерполяцию ${..} с несколькими переменными по примеру из лекции.
   
