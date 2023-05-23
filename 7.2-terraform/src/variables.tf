@@ -37,7 +37,7 @@ description = "VPC network & subnet name"
 
 variable "vms_ssh_root_key" {
 type        = string
-default     = "ubuntu:ssh-ed25519 XXXXXXXXXXXXXXXXXX administrator@NB-Sergey-Asus"
+default     = "ubuntu:ssh-ed25519 XXXXXXXXXXXXXXXXXX administrator@alexander-lenovo"
 description = "ssh-keygen -t ed25519"
 }
 
