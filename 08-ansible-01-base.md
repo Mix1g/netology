@@ -250,5 +250,11 @@
 12 Заполните `README.md` ответами на вопросы. Сделайте `git push в ветку master`. В ответе отправьте ссылку на ваш открытый репозиторий с изменённым `playbook` и заполненным `README.md.`
 
 
+#### Необязательная часть
 
+1 При помощи `ansible-vault` расшифруйте все зашифрованные файлы с переменными.
+
+    alexander@Lenovo:~/ansible/08-ansible-01-base$   ansible-vault decrypt --ask-vault-password group_vars/deb/* group_vars/el/*
+    
+    
     
