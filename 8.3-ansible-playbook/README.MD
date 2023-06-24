@@ -1,4 +1,4 @@
-###Описание Playbook
+ ### Описание Playbook
 1. site.yml Устанавливает на хосты clickhouse и vector nginx lighthouse
 2. вся инфракструктура поднимается terraform
 3. terraform создает файл с хостами и кладет в inventory/prod.yml 
