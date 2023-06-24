@@ -9,3 +9,4 @@
 7. template/nginx_lighthouse.j2 конфиг для lighthouse 
 8. template/vector.yml.j2 конфиг vector 
 9. template/vector.service.j2 конфиг для systemd 
+/
