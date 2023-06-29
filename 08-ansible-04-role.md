@@ -41,4 +41,9 @@
 
 ### Решение
 
+[lighthouse-role](https://github.com/Mix1g/netology/tree/master/8.4-ansible-role-playbook/lighthouse-role)
+
+[vector-role](https://github.com/Mix1g/netology/tree/master/8.4-ansible-role-playbook/vector-role)
+
+
 
