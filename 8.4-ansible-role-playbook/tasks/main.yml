@@ -1,0 +1,43 @@
+---
+- name: Install Vector
+  hosts: vector
+  handlers:
+    - name: enable vector
+      systemd:
+        name: vector
+        daemon_reload: true
+        enabled: true
+        masked: false
+    - name: restart vector
+      when: packer_build_name is not defined
+      systemd:
+        name: vector
+        state: restarted
+        daemon_reload: true
+  tasks:
+    - name: Add vector apt key
+      apt_key:
+        url: https://repositories.timber.io/public/vector/gpg.3543DB2D0A2BC4B8.key
+        id: 1E46C153E9EFA24018C36F753543DB2D0A2BC4B8
+        state: present
+      register: add_repository_key
+      tags:
+        - install
+    - name: Add vector apt repository
+      apt_repository:
+        repo: "{{ item }}"
+        state: present
+        update_cache: true
+      loop:
+        - deb https://repositories.timber.io/public/vector/deb/debian {{ ansible_distribution_release }} main
+        - deb-src https://repositories.timber.io/public/vector/deb/debian {{ ansible_distribution_release }} main
+      tags:
+        - install
+    - name: Install vector
+      apt:
+        name: vector={{ vector_version }}
+        state: present
+      notify:
+        - enable vector
+      tags:
+        - install

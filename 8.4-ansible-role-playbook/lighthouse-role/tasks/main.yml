@@ -1,0 +1,124 @@
+---
+# tasks file for lighthouse-role
+- name: Install Lighthouse
+  hosts: lighthouse
+  handlers:
+- name: Lighthouse - install APT build dependencies
+  become: yes
+  apt:
+    pkg:
+      - curl
+      - git
+      - gcc
+      - g++
+      - make
+      - cmake
+      - pkg-config
+      - libssl-dev
+      - libclang-dev
+      - vim # :-)
+- name: Lighthouse - install rustup
+  shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal
+  args:
+    creates: ~/.cargo/bin/rustc
+- name: Lighthouse - ensure ~/src directory
+  file:
+    path: ~/src
+    state: directory
+- name: Lighthouse - clone repository
+  git:
+    repo: 'https://github.com/sigp/lighthouse'
+    dest: ~/src/lighthouse
+    clone: yes
+    update: yes
+    version: 'v2.1.3'
+- name: Lighthouse - make
+  shell: . ~/.profile && make
+  args:
+    chdir: ~/src/lighthouse
+- name: Lighthouse - install system-wide
+  become: yes
+  copy:
+    src: "{{ ansible_user_dir }}/.cargo/bin/lighthouse"
+    dest: /usr/local/bin/lighthouse
+    remote_src: yes
+    owner: root
+    group: root
+    mode: 0755
+- name: Lighthouse - create common user group
+  become: yes
+  group:
+    name: lighthouse
+    state: present
+- name: Lighthouse - create data directory
+  become: yes
+  file:
+    path: /var/lib/lighthouse
+    state: directory
+    mode: 'u=rwx,g=rx'
+    owner: root
+    group: lighthouse
+- name: Lighthouse - create dedicated user for beacon node
+  become: yes
+  user:
+    name: lhbn
+    create_home: no
+    home: /nonexistent
+    shell: /bin/false
+    groups: lighthouse
+- name: Lighthouse - prepare workspace for beacon node user
+  become: yes
+  file:
+    path: /var/lib/lighthouse/beacon
+    state: directory
+    recurse: yes
+    mode: o-rwx
+    owner: lhbn
+    group: lhbn
+- name: Lighthouse - install systemd service for beacon node
+  become: yes
+  copy:
+    src: files/systemd/lighthouse-beacon-node.service
+    dest: /etc/systemd/system/lighthouse-beacon-node.service
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Lighthouse - create dedicated user for validator client
+  become: yes
+  user:
+    name: lhvc
+    create_home: no
+    home: /nonexistent
+    shell: /bin/false
+    groups: lighthouse
+
+- name: Lighthouse - prepare workspace for validator client user
+  become: yes
+  file:
+    path: /var/lib/lighthouse/validators
+    state: directory
+    recurse: yes
+    mode: o-rwx
+    owner: lhvc
+    group: lhvc
+
+- name: Lighthouse - install systemd service for validator client
+  become: yes
+  copy:
+    src: files/systemd/lighthouse-validator-client.service
+    dest: /etc/systemd/system/lighthouse-validator-client.service
+    owner: root
+    group: root
+    mode: 0600
+
+- name: systemd daemon-reload
+  become: yes
+  systemd:
+    daemon_reload: yes
+
+- name: UFW - allow port 9000 (Lighthouse)
+  become: yes
+  ufw:
+    rule: allow
+    port: 9000
