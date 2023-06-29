@@ -45,5 +45,7 @@
 
 [vector-role](https://github.com/Mix1g/netology/tree/master/8.4-ansible-role-playbook/vector-role)
 
+[playbook](https://github.com/Mix1g/netology/blob/master/8.4-ansible-role-playbook/site.yml)
+
 
 
