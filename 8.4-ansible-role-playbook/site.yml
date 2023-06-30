@@ -8,3 +8,4 @@
 - hosts: lighthouse-01
   roles:
   - lighthouse-role
+  
