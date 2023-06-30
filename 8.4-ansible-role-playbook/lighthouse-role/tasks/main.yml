@@ -122,3 +122,4 @@
   ufw:
     rule: allow
     port: 9000
+    
