@@ -1,0 +1,10 @@
+---
+- src: git@github.com:mix1g/clickhouse-role.git
+  scm: git
+  version: "1.0.0"
+  name: clickhouse-role
+- src: git@github.com:mix1g/vector-role.git
+  scm: git
+  version: "v1.2.0"
+  name: vector-role
+   
