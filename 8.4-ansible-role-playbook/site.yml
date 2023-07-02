@@ -1,11 +1,70 @@
 ---
-- hosts: clickhouse-01
+- name: Install vector
+  hosts: all
   roles:
-  - clickhouse-r
-- hosts: vector-01
+    - vector-role
+  post_tasks:
+    - name: Copy vector config
+      become: true
+      template:
+        src: "templates/vector.toml"
+        dest: "/usr/conf/vector.toml"
+    - name: Change file permissions vector.toml
+      become: true
+      ansible.builtin.file:
+        path: "/usr/conf/vector.toml"
+        state: touch
+        mode: "0765"
+- name: Install Clickhouse
+  hosts: clickhouse
   roles:
-  - vector-role
-- hosts: lighthouse-01
+    - clickhouse-role
+  post_tasks:
+    - block:
+      - name: Create database
+        ansible.builtin.command: "clickhouse-client -q 'create database logs;'"
+        register: create_db
+        failed_when: create_db.rc !=0 and create_db.rc !=82
+        changed_when: create_db.rc ==0
+      rescue:
+      - name: start clickhouse-server
+        become: true
+        ansible.builtin.command: "systemctl start clickhouse-server.service"
+      - name: Create database
+        ansible.builtin.command: "clickhouse-client -h {{ clickhouse_server }} -q 'create database logs;'"
+        register: create_db
+        failed_when: create_db.rc !=0 and create_db.rc !=82
+        changed_when: create_db.rc ==0
+    - name: Create table logs.alerts
+      ansible.builtin.command: "clickhouse-client -h {{ clickhouse_server }} -q 'create table logs.alerts (message String) ENGINE = TinyLog();' "
+      register: create_table
+      failed_when: create_table.rc !=0 and create_table.rc !=57
+      changed_when: create_table.rc ==0
+- name: Testing vector
+  hosts: all
+  tasks:
+    - name: Send massege in vector
+      ansible.builtin.shell: "echo 'Hello world!' | vector --config /usr/conf/vector.toml"
+- name: Install lighthouse
+  hosts: lighthouse
   roles:
-  - lighthouse-role
-  
+    - nginx-role
+  post_tasks:
+    - name: install git
+      become: true
+      ansible.builtin.yum:
+        name: 
+          - git
+    - name: Clone of a single branch lighthouse
+      become: true
+      ansible.builtin.git:
+        repo: https://github.com/VKCOM/lighthouse.git
+        dest: /usr/share/nginx/html/
+        single_branch: yes
+        version: master
+        force: yes
+    - name: Start nginx
+      become: true
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
