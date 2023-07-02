@@ -41,6 +41,13 @@
 
 ### Решение
 
+##### Описать в README.md обе роли и их параметр
+
+https://github.com/Mix1g/netology/blob/master/8.4-ansible-role-playbook/lighthouse-role/README.md
+
+https://github.com/Mix1g/netology/blob/master/8.4-ansible-role-playbook/vector-role/README.md
+
+
 [lighthouse-role](https://github.com/Mix1g/netology/tree/master/8.4-ansible-role-playbook/lighthouse-role)
 
 [vector-role](https://github.com/Mix1g/netology/tree/master/8.4-ansible-role-playbook/vector-role)
