@@ -1,0 +1,63 @@
+# tasks file for vector-role
+- name: Install Vector
+  become: true
+  become_method: su
+  block:
+  - name: Vector | Get vector distrib
+    get_url:
+      url: https://packages.timber.io/vector/{{ vector_version }}/vector-{{ vector_version }}-1.x86_64.rpm
+      dest: ./vector-{{ vector_version }}-1.x86_64.rpm
+      mode: '0755'
+  - name: Get repos information
+    ansible.builtin.shell: ls -la /etc/yum.repos.d/
+    register: result
+    changed_when: "'changed' in result.stdout"
+  - name: yum update
+    command: yum update -y
+    register: script_res
+    changed_when: "'changed' in script_res.stdout"
+  - name: Add docker repo
+    become_user: root
+    get_url:
+      url: https://download.docker.com/linux/centos/docker-ce.repo
+      dest: /etc/yum.repos.d/docker-ce.repo
+      validate_certs: false
+  - name: Vector | Install vector rpm
+    ansible.builtin.yum:
+      name: vector-{{ vector_version }}-1.x86_64.rpm
+      disable_gpg_check: true
+  - name: Add vector user to systemd-journal group
+    user:
+      name: vector
+      groups: systemd-journal
+      append: true
+  - name: Vector | Update vector config
+    ansible.builtin.lineinfile:
+      path: /etc/default/vector
+      regexp: 'VECTOR_CONFIG='
+      line: VECTOR_CONFIG=/etc/vector/config.yaml
+  - name: Vector | Create vector config
+    ansible.builtin.copy:
+      dest: /etc/vector/config.yaml
+      mode: 0644
+      content: |
+        {{ vector_config | to_nice_yaml(indent=2) }}
+  - name: Enable vector service
+    become: true
+    ansible.builtin.service:
+      name: vector
+      enabled: yes
+  - name: Detect Servers
+    debug:
+      msg: ansible_facts['distribution']
+  #    when:  ansible_facts['distribution'] == "Ubuntu"
+  # - name: ReStart vector service
+  #   become: true
+  #   ansible.builtin.service:
+  #     name: vector
+  #     state: restarted
+  # - name: Start vector service
+  #   become: true
+  #   ansible.builtin.service:
+  #     name: vector
+  #     state: started
