@@ -543,4 +543,4 @@ INFO     Pruning extra files from scenario ephemeral directory
 
 7. Добавим новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием: - готово.
 
-[Тестируемая роль](https://)
+[Тестируемая роль](https://github.com/Mix1g/netology/tree/master/08-ansible-05-testing)
