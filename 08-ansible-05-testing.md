@@ -39,8 +39,8 @@ docker.io/aragast/netology:latest
 INFO     centos_7 scenario test matrix: dependency, lint, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
 INFO     Performing prerun with role_name_check=0...
 INFO     Set ANSIBLE_LIBRARY=/home/alexander/.cache/ansible-compat/b9a93c/modules:/home/alexander/.ansible/plugins/modules:/usr/share/ansible/plugins/modules
-INFO     Set ANSIBLE_COLLECTIONS_PATH=/home/alexander/.cache/ansible-compat/b9a93c/collections:/home/aleksturbo/.ansible/collections:/usr/share/ansible/collections
-INFO     Set ANSIBLE_ROLES_PATH=/home/alexander/.cache/ansible-compat/b9a93c/roles:/home/aleksturbo/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles
+INFO     Set ANSIBLE_COLLECTIONS_PATH=/home/alexander/.cache/ansible-compat/b9a93c/collections:/home/alexander/.ansible/collections:/usr/share/ansible/collections
+INFO     Set ANSIBLE_ROLES_PATH=/home/alexander/.cache/ansible-compat/b9a93c/roles:/home/alexander/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles
 INFO     Using /home/alexander/.cache/ansible-compat/b9a93c/roles/alexeysetevoi.clickhouse symlink to current repository in order to enable Ansible to find the role using its expected full name.
 INFO     Running centos_7 > dependency
 WARNING  Skipping, missing the requirements file.
@@ -93,18 +93,18 @@ INFO     Pruning extra files from scenario ephemeral directory
 ```bash
 [alexander@oracle vector_role]$ molecule init scenario --driver-name docker
 INFO     Initializing new scenario default...
-INFO     Initialized scenario in /home/aleksturbo/netology/ansible84/roles/vector_role/molecule/default successfully.
+INFO     Initialized scenario in /home/alexander/netology/ansible84/roles/vector_role/molecule/default successfully.
 ```
 
 3. Добавим дистрибутивы инстансов и протестируем роль - готово.
   
 ```bash
-[aleksturbo@oracle vector_role]$ molecule test -s centos_7
+[alexander@oracle vector_role]$ molecule test -s centos_7
 INFO     centos_7 scenario test matrix: dependency, lint, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
 INFO     Performing prerun with role_name_check=0...
-INFO     Set ANSIBLE_LIBRARY=/home/aleksturbo/.cache/ansible-compat/e3fa2b/modules:/home/alexander/.ansible/plugins/modules:/usr/share/ansible/plugins/modules
-INFO     Set ANSIBLE_COLLECTIONS_PATH=/home/aleksturbo/.cache/ansible-compat/e3fa2b/collections:/home/alexander/.ansible/collections:/usr/share/ansible/collections
-INFO     Set ANSIBLE_ROLES_PATH=/home/aleksturbo/.cache/ansible-compat/e3fa2b/roles:/home/alexander/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles
+INFO     Set ANSIBLE_LIBRARY=/home/alexander/.cache/ansible-compat/e3fa2b/modules:/home/alexander/.ansible/plugins/modules:/usr/share/ansible/plugins/modules
+INFO     Set ANSIBLE_COLLECTIONS_PATH=/home/alexander/.cache/ansible-compat/e3fa2b/collections:/home/alexander/.ansible/collections:/usr/share/ansible/collections
+INFO     Set ANSIBLE_ROLES_PATH=/home/alexander/.cache/ansible-compat/e3fa2b/roles:/home/alexander/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles
 INFO     Using /home/alexander/.cache/ansible-compat/e3fa2b/roles/local.vector symlink to current repository in order to enable Ansible to find the role using its expected full name.
 INFO     Running centos_7 > dependency
 WARNING  Skipping, missing the requirements file.
@@ -175,14 +175,14 @@ verify.yml:
 [alexander@oracle vector_role]$ molecule test -s centos_7
 INFO     centos_7 scenario test matrix: dependency, lint, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
 INFO     Performing prerun with role_name_check=0...
-INFO     Set ANSIBLE_LIBRARY=/home/aleksturbo/.cache/ansible-compat/e3fa2b/modules:/home/aleksturbo/.ansible/plugins/modules:/usr/share/ansible/plugins/modules
-INFO     Set ANSIBLE_COLLECTIONS_PATH=/home/aleksturbo/.cache/ansible-compat/e3fa2b/collections:/home/aleksturbo/.ansible/collections:/usr/share/ansible/collections
-INFO     Set ANSIBLE_ROLES_PATH=/home/aleksturbo/.cache/ansible-compat/e3fa2b/roles:/home/aleksturbo/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles
-INFO     Using /home/aleksturbo/.cache/ansible-compat/e3fa2b/roles/local.vector symlink to current repository in order to enable Ansible to find the role using its expected full name.
+INFO     Set ANSIBLE_LIBRARY=/home/alexander/.cache/ansible-compat/e3fa2b/modules:/home/aleksturbo/.ansible/plugins/modules:/usr/share/ansible/plugins/modules
+INFO     Set ANSIBLE_COLLECTIONS_PATH=/home/alexander/.cache/ansible-compat/e3fa2b/collections:/home/aleksturbo/.ansible/collections:/usr/share/ansible/collections
+INFO     Set ANSIBLE_ROLES_PATH=/home/alexander/.cache/ansible-compat/e3fa2b/roles:/home/aleksturbo/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles
+INFO     Using /home/alexander/.cache/ansible-compat/e3fa2b/roles/local.vector symlink to current repository in order to enable Ansible to find the role using its expected full name.
 INFO     Running centos_7 > dependency
 Starting galaxy role install process
 - changing role vector_role from  to unspecified
-- extracting vector_role to /home/aleksturbo/.cache/molecule/vector_role/centos_7/roles/vector_role
+- extracting vector_role to /home/alexander/.cache/molecule/vector_role/centos_7/roles/vector_role
 - vector_role was installed successfully
 INFO     Dependency completed successfully.
 WARNING  Skipping, missing the requirements file.
@@ -234,13 +234,13 @@ drwxr-xr-x.  5 aleksturbo aleksturbo   52 Dec  4 12:08 .tox
 ```bash
 [alexander@oracle vector_role]$ molecule init scenario tox --driver-name=docker
 INFO     Initializing new scenario tox...
-INFO     Initialized scenario in /home/aleksturbo/netology/ansible84/roles/vector_role/molecule/tox successfully.
+INFO     Initialized scenario in /home/alexander/netology/ansible84/roles/vector_role/molecule/tox successfully.
 ```
 
 2. Запустим "docker run". - готово
 
 ```bash
-[alexander@oracle vector_role]$ docker run --privileged=True -v /home/aleksturbo/netology/ansible84/roles/vector_role:/opt/vector-role -w /opt/vector-role -it aragast/netology:latest /bin/bash
+[alexander@oracle vector_role]$ docker run --privileged=True -v /home/alexander/netology/ansible84/roles/vector_role:/opt/vector-role -w /opt/vector-role -it aragast/netology:latest /bin/bash
 [root@65ffc893f352 vector-role]# 
 ```
 
