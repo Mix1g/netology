@@ -38,8 +38,8 @@ writing manifest file 'lib/ansible_core.egg-info/SOURCES.txt'
 
 Setting up Ansible to run out of checkout...
 
-PATH=/home/alexander/netology/ansible/bin:/home/aleksturbo/netology/ansible/venv/bin:/home/aleksturbo/.vscode-server/bin/6261075646f055b99068d3688932416f2346dd3b/bin/remote-cli:/home/aleksturbo/.local/bin:/home/aleksturbo/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
-PYTHONPATH=/home/alexander/netology/ansible/test/lib:/home/aleksturbo/netology/ansible/lib
+PATH=/home/alexander/netology/ansible/bin:/home/alexander/netology/ansible/venv/bin:/home/aleksturbo/.vscode-server/bin/6261075646f055b99068d3688932416f2346dd3b/bin/remote-cli:/home/aleksturbo/.local/bin:/home/alexander/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+PYTHONPATH=/home/alexander/netology/ansible/test/lib:/home/alexander/netology/ansible/lib
 MANPATH=/home/alexander/netology/ansible/docs/man:/usr/local/share/man:/usr/share/man
 
 Remember, you may wish to specify your host file with -i
