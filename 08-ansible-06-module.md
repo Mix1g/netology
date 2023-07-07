@@ -4,7 +4,7 @@
 
 1. Создадим пустой публичных репозиторий : готово.
 
-[my_own_collection]()
+[my_own_collection](https://github.com/Mix1g/netology/tree/master/08-ansible-06-module/my_own_collection)
 
 2. Скачаем репозиторий ansible: git clone https://github.com/ansible/ansible.git: готово.
 
