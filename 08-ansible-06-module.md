@@ -208,4 +208,4 @@ localhost                  : ok=4    changed=0    unreachable=0    failed=0    s
 
 17. Cсылка на репозиторий с collection:
 
-[my_own_collection]()
+[my_own_collection](https://github.com/Mix1g/netology/tree/master/08-ansible-06-module/my_own_collection)
