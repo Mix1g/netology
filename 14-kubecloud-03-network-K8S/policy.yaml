@@ -1,0 +1,37 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: permit
+  namespace: app
+spec:
+  podSelector:
+    matchLabels:
+      app: frontend
+  ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            app: backend
+      ports:
+        - protocol: TCP
+          port: 443
+
+---
+
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: permitcache
+  namespace: app
+spec:
+  podSelector:
+    matchLabels:
+      app: backend
+  ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            app: cache
+      ports:
+        - protocol: TCP
+          port: 443
