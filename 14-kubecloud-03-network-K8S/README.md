@@ -18,7 +18,7 @@
 
 ![1](img/1.png)
 
-Написал deployments [backend](https://github.com/khayrullinii/devops-netology/blob/master/13-kuber-03-network-K8S-khayrullin/back.yaml) , [frontend](https://github.com/khayrullinii/devops-netology/blob/master/13-kuber-03-network-K8S-khayrullin/front.yaml), [cache](https://github.com/khayrullinii/devops-netology/blob/master/13-kuber-03-network-K8S-khayrullin/cache.yaml). И для каждого svc соответсвенно. Поднял поды:
+Написал deployments [backend](https://github.com/Mix1g/netology/tree/master/14-kubecloud-03-network-K8S/back.yaml) , [frontend](https://github.com/Mix1g/netology/tree/master/14-kubecloud-03-network-K8S/front.yaml), [cache](https://github.com/Mix1g/netology/tree/master/14-kubecloud-03-network-K8S/cache.yaml). И для каждого svc соответсвенно. Поднял поды:
 
 ![2](img/2.png)
 
@@ -28,11 +28,11 @@
 
 ![3](img/3.png)
 
-После применения запрещающего [правила](https://github.com/khayrullinii/devops-netology/blob/master/13-kuber-03-network-K8S-khayrullin/net_policy.yaml):
+После применения запрещающего [правила](https://github.com/Mix1g/netology/blob/master/14-kubecloud-03-network-K8S/net_policy.yaml):
 
 ![4](img/4.png)
 
-После применения разрешающего [правила](https://github.com/khayrullinii/devops-netology/blob/master/13-kuber-03-network-K8S-khayrullin/policy.yaml)
+После применения разрешающего [правила](https://github.com/Mix1g/netology/blob/master/14-kubecloud-03-network-K8S/policy.yaml)
 
 ![5](img/5.png)
 
