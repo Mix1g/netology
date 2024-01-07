@@ -66,7 +66,7 @@ curl: (6) Couldn't resolve host 'auth-db'
 ```
 Т.к. `pod-ы` в разных `namespace`, есть предположение, что это где-то не обозначено, поэтому `pod-ы` из `web` не могут достучаться до `pod-a` из `data`  
 Исправляю на `auth-db.data` через команду `kubectl edit -n web deployments.apps web-consumer`  
-![image](https://https://github.com/Mix1g/netology/tree/master/14-kubecloud-05-Troubleshooting/239f.jpg)
+![image](https://github.com/Mix1g/netology/tree/master/14-kubecloud-05-Troubleshooting/239f.jpg)
 
 ```bash
 ubuntu@ubuntu-VirtualBox:~/.kube$ kubectl edit -n web deployments.apps web-consumer
