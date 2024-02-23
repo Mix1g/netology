@@ -122,7 +122,7 @@
 3. Дашборды в grafana отображающие состояние Kubernetes кластера.
 4. Http доступ к тестовому приложению.
 
-[Git K8s](https://github.com/mix1g/devops/tree/main/devops-diplom-yandexcloud-sold/kube/inventory/mycluster)
+[Git K8s](https://github.com/Mix1g/netology/tree/master/devops-diplom-yandexcloud-sold/kube/inventory/mycluster)
 
 ![](diplom/Grafana.PNG)
 
