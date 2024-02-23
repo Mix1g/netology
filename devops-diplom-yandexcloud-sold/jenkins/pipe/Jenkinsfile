@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    dockerimagename = "f1omactep/nginxapptest"
+    dockerimagename = "mix1g/nginxapptest"
     dockerImage = ""
 
   }
@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Checkout Source') {
       steps {
-        git branch: 'main', url: 'https://github.com/F1oMaCTeP/App.git'
+        git branch: 'main', url: 'https://github.com/mix1g/App.git'
       }
     }
     stage('Checkout tag') {
